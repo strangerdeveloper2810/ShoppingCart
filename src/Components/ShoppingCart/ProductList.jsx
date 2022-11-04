@@ -11,10 +11,10 @@ import { getAllProductApi } from "../../redux/reducer/shoppingCartReducer";
 export default function ProductList(props) {
   const product = useSelector((state) => state.shoppingCartReducer.dataProduct);
   const dispatch = useDispatch();
-  useEffect(()=>{
+  useEffect(() => {
     const actionThunk = getAllProductApi();
     dispatch(actionThunk);
-  },[]);
+  }, []);
   const renderProductList = () => {
     return product.map((item, index) => (
       <Grid item xs={4} key={index}>
