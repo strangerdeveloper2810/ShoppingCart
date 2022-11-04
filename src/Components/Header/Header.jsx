@@ -1,11 +1,28 @@
 import React from "react";
-
+import { NavLink } from "react-router-dom";
 export default function Header(props) {
+  const handleActive = () => {
+    return ({ isActive }) =>
+      isActive
+        ? "nav-link border-bottom border-secondary fw-bold text-success"
+        : "nav-link";
+  };
+
+  // const HandleActive =
+  //   () =>
+  //   ({ isActive }) =>
+  //     isActive
+  //       ? "nav-link border-bottom  border-secondary fw-bold text-success"
+  //       : "nav-link";
+
+  const handleActiveStyle = () => {
+    return ({ isActive }) => (isActive ? { border: "2px solid black" } : {});
+  };
   return (
-    <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-      <a className="navbar-brand" href="#">
-        Navbar
-      </a>
+    <nav className="navbar navbar-expand-sm navbar-info bg-info">
+      <NavLink className="navbar-brand" to="shoeshop">
+        Shoe Shop
+      </NavLink>
       <button
         className="navbar-toggler d-lg-none"
         type="button"
@@ -18,34 +35,48 @@ export default function Header(props) {
       <div className="collapse navbar-collapse" id="collapsibleNavId">
         <ul className="navbar-nav me-auto mt-2 mt-lg-0">
           <li className="nav-item">
-            <a className="nav-link active" href="#" aria-current="page">
-              Home <span className="visually-hidden">(current)</span>
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#">
-              Link
-            </a>
-          </li>
-          <li className="nav-item dropdown">
-            <a
-              className="nav-link dropdown-toggle"
-              href="#"
-              id="dropdownId"
-              data-bs-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
+            <NavLink
+              // className={({ isActive }) =>
+              //   isActive
+              //     ? "nav-link border-bottom  border-secondary fw-bold text-success"
+              //     : "nav-link"
+              // }
+              className={handleActive()}
+              style={handleActiveStyle()}
+              to="/home"
             >
-              Dropdown
-            </a>
-            <div className="dropdown-menu" aria-labelledby="dropdownId">
-              <a className="dropdown-item" href="#">
-                Action 1
-              </a>
-              <a className="dropdown-item" href="#">
-                Action 2
-              </a>
-            </div>
+              Home
+            </NavLink>
+          </li>
+
+          <li className="nav-item">
+            <NavLink
+              // className={({ isActive }) =>
+              //   isActive
+              //     ? "nav-link border-bottom  border-secondary fw-bold text-success"
+              //     : "nav-link"
+              // }
+              className={handleActive()}
+              style={handleActiveStyle()}
+              to="reactform"
+            >
+              React Form
+            </NavLink>
+          </li>
+
+          <li className="nav-item">
+            <NavLink
+              // className={({ isActive }) =>
+              //   isActive
+              //     ? "nav-link border-bottom  border-secondary fw-bold text-success"
+              //     : "nav-link"
+              // }
+              className={handleActive()}
+              style={handleActiveStyle()}
+              to="shop"
+            >
+              Shop
+            </NavLink>
           </li>
         </ul>
         <form className="d-flex my-2 my-lg-0">
