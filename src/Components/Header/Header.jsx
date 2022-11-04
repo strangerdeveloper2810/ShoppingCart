@@ -78,6 +78,21 @@ export default function Header(props) {
               Shop
             </NavLink>
           </li>
+
+          <li className="nav-item">
+            <NavLink
+              // className={({ isActive }) =>
+              //   isActive
+              //     ? "nav-link border-bottom  border-secondary fw-bold text-success"
+              //     : "nav-link"
+              // }
+              className={handleActive()}
+              style={handleActiveStyle()}
+              to="search"
+            >
+              Search
+            </NavLink>
+          </li>
         </ul>
         <form className="d-flex my-2 my-lg-0">
           <input
