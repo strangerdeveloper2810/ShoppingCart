@@ -1,7 +1,14 @@
 import { Container } from "@mui/material";
 import Home from "./Components/ShoppingCart/Home";
 
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  unstable_HistoryRouter as HistoryRouter,
+} from "react-router-dom";
+import { createBrowserHistory } from "history";
 import HomeTemplate from "./Templates/HomeTemplate";
 import HomePage from "./Pages/Home/HomePage";
 import ReactForm from "./Pages/ReactForm/ReactForm";
@@ -9,9 +16,11 @@ import Shop from "./Pages/Shop/Shop";
 import AdminTemplate from "./Templates/AdminTemplate";
 import Users from "./Pages/Admin/Users/Users";
 import Products from "./Pages/Admin/Products/Products";
+
+export const history = createBrowserHistory({ window });
 function App() {
   return (
-    <BrowserRouter>
+    <HistoryRouter history={history}>
       <Container maxWidth="xl">
         <Routes>
           {/* Learn React-Router-Dom New Version */}
@@ -24,13 +33,13 @@ function App() {
             <Route path="*" element={<Navigate to={"home"} />} />
           </Route>
 
-          <Route path="admin" element={<AdminTemplate/>}>
-          <Route path="user" element={<Users/>}/>
-          <Route path="product" element={<Products/>}/>
+          <Route path="admin" element={<AdminTemplate />}>
+            <Route path="user" element={<Users />} />
+            <Route path="product" element={<Products />} />
           </Route>
         </Routes>
       </Container>
-    </BrowserRouter>
+    </HistoryRouter>
   );
 }
 
